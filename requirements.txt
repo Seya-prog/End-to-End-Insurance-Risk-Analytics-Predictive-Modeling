@@ -1,24 +1,25 @@
-# Web scraping
-google_play_scraper
-
 # Data manipulation
 pandas
 numpy
 python-dateutil
 
-# NLP & Sentiment Analysis
+# Scientific computing & statistics
+scipy
+statsmodels
+
+# Machine Learning & Model Interpretation
 scikit-learn
-nltk
-spacy
-textblob
-vaderSentiment
-transformers
-torch
+xgboost
+shap
+lime
 
 # Visualization
 matplotlib
 seaborn
 wordcloud
+
+# Data Version Control
+dvc
 
 # Database (Oracle and fallback to PostgreSQL)
 cx_Oracle
@@ -31,7 +32,5 @@ jupyter
 ipykernel
 nbformat
 
-# For reproducibility and testing
+# Testing
 pytest
-
-huggingface_hub[hf_xet]

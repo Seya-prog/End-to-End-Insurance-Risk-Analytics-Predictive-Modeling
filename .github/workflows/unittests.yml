@@ -23,9 +23,15 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Download NLTK data
+      - name: Fetch DVC data (if available)
         run: |
-          python -m nltk.downloader punkt stopwords vader_lexicon
+          if [ -f .dvc/config ]; then
+            echo "Pulling data via DVC …";
+            dvc pull -q || echo "No DVC data to pull.";
+          else
+            echo "DVC not initialized in this branch.";
+          fi
+
 
       - name: Run tests (if any)
         run: |
