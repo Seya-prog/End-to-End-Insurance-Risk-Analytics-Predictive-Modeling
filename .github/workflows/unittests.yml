@@ -29,4 +29,16 @@ jobs:
 
       - name: Run tests (if any)
         run: |
-          if [ -d "test" ] && [ "$(ls -A test)" ]; then pytest test; else echo "No tests found."; fi
+          if [ -d "test" ] && [ "$(ls -A test)" ]; then
+            echo "Running pytest…"
+            pytest test || code=$?
+            # Exit code 5 = no tests collected → treat as success
+            if [ "$code" = "5" ]; then
+              echo "No tests collected – skipping failure.";
+              exit 0;
+            else
+              exit $code;
+            fi
+          else
+            echo "No tests found.";
+          fi
