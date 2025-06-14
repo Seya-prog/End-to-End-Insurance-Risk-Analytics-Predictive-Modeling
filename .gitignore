@@ -1,2 +1,5 @@
 .venv
 \data
+# Jupyter artefacts
+*.ipynb_checkpoints/
+outputs/

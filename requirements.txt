@@ -28,6 +28,8 @@ psycopg2-binary
 # Utilities
 tqdm
 jupyter
+ipykernel
+nbformat
 
 # For reproducibility and testing
 pytest
