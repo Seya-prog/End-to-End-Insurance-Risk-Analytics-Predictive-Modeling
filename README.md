@@ -1,20 +1,18 @@
 # End-to-End Insurance Risk Analytics & Predictive Modeling
 
-Notebook-driven project for analysing motor-insurance risk, testing hypotheses, and building predictive models for risk-based pricing.
+This repository contains an end-to-end, notebook-driven workflow for analysing South-African motor-insurance risk factors, performing statistical hypothesis tests, and building predictive models to support risk-based pricing.
 
 ---
 
 ## Repository Structure
 
 ```
-.
 ├── data/                 # DVC-tracked raw dataset
 ├── notebooks/            # Jupyter notebooks (EDA → Hypothesis → Modeling)
 ├── scripts/              # Helper scripts (placeholder)
 ├── test/                 # Pytest tests
 ├── requirements.txt      # Python deps
 └── README.md             # Project overview (this file)
-```
 
 ### Key Notebooks
 | Notebook | Task | Purpose |
@@ -86,6 +84,5 @@ Add tests under `test/` as scripts are refactored from notebooks.
 3. Commit with meaningful messages (`feat: add tweedie GLM`).
 4. Open a pull request; CI will run lint & tests.
 
----
 
-© 2025 Windsurf Analytics – MIT License.
+
