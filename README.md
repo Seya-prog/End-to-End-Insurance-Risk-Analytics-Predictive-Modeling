@@ -7,96 +7,82 @@ This repository contains an end-to-end, notebook-driven workflow for analysing S
 ## Repository Structure
 
 ```
-.
-├── data/                       # DVC-tracked raw dataset (MachineLearningRating_v3.txt)
-├── notebooks/                  # Jupyter notebooks (EDA, hypothesis testing, modelling)
-├── scripts/                    # Helper scripts / utilities (placeholder)
-├── test/                       # Unit / integration tests (pytest)
-├── requirements.txt            # Python dependencies
-└── README.md                   # You are here
-```
+├── data/                 # DVC-tracked raw dataset
+├── notebooks/            # Jupyter notebooks (EDA → Hypothesis → Modeling)
+├── scripts/              # Helper scripts (placeholder)
+├── test/                 # Pytest tests
+├── requirements.txt      # Python deps
+└── README.md             # Project overview (this file)
 
 ### Key Notebooks
 | Notebook | Task | Purpose |
 |----------|------|---------|
-| `notebooks/task1_eda.ipynb` | **Task-1** | Exploratory Data Analysis – distributions, correlations, missing-values. |
-| `notebooks/hypothesis_testing.ipynb` | **Task-3** | Non-parametric hypothesis tests on Loss Ratio (single KPI) with control / test segmentation. |
-| `notebooks/modeling.ipynb` | **Task-4** | Claim-severity regression, probability-of-claim classification, SHAP interpretation & risk-based pricing illustration. |
+| `task1_eda.ipynb`        | 1 | Exploratory data analysis. |
+| `hypothesis_testing.ipynb` | 3 | Non-parametric tests on Loss Ratio (control vs test segmentation). |
+| `modeling.ipynb`         | 4 | Severity & frequency models, SHAP interpretation, risk-based premium demo. |
 
->  *Tasks 2 & 3 are combined in the hypothesis-testing notebook, while Task-4 introduces the advanced modelling pipeline.*
+*(Task-2 data preparation & feature engineering are included in the **task1_eda.ipynb** notebook.)*
 
 ---
 
-## Quick-start
+## Quick-Start
 
-1. **Clone the repository & initialise DVC data**
-   ```bash
-   git clone https://github.com/<org>/<repo>.git
-   cd End-to-End-Insurance-Risk-Analytics-Predictive-Modeling
-   dvc pull               # downloads the ~35 MB dataset from remote storage
-   ```
+```bash
+# clone repo & pull data
+git clone https://github.com/<org>/<repo>.git
+cd End-to-End-Insurance-Risk-Analytics-Predictive-Modeling
+dvc pull                        # downloads dataset (~35 MB)
 
-2. **Create a Python ≥ 3.11 virtual environment** (scikit-learn ≥ 1.4 wheels not yet available for 3.13).
-   ```bash
-   python -m venv .venv
-   .\.venv\Scripts\activate    # Windows – on Linux/Mac: source .venv/bin/activate
-   python -m pip install -r requirements.txt
-   ```
+# create env on supported python (≤ 3.12) and install deps
+python -m venv .venv
+.\.venv\Scripts\activate        # Windows – adjust for macOS / Linux
+python -m pip install -r requirements.txt
 
-3. **Launch JupyterLab**
-   ```bash
-   jupyter lab
-   ```
-   Run the notebooks in order (`task1_eda → hypothesis_testing → modeling`).
+# launch jupyter
+jupyter lab
+```
+Run notebooks in order: **task1_eda → hypothesis_testing → modeling**.
 
 ---
 
 ## Branch Workflow
 
-* `main` – Production-ready code / notebooks.
-* `task-3` – Hypothesis-testing development (merged).
-* `task-4` – Predictive modelling & pricing (active).
+* `main`   – Stable, production-ready code.
+* `task-1` – Exploratory Data Analysis.
+* `task-2` – Data preparation & feature engineering.
+* `task-3` – Hypothesis testing (single KPI).
+* `task-4` – Predictive modeling & pricing framework.
 
-Use feature branches off `task-4` for further modelling tweaks; open pull-requests towards `task-4`, then PR into `main` once complete.
+Open PRs from task branches into `main` once the task is complete.
 
 ---
 
-## Dependencies
+## Dependencies (excerpt)
 
-See `requirements.txt`.  Key packages:
 * pandas, numpy, matplotlib, seaborn
-* scikit-learn ≥ 1.4 (classification & regression)
-* xgboost
-* shap (model interpretability)
-* dvc (data version control)
+* scikit-learn ≥ 1.4 (requires Python ≤ 3.12 at time of writing)
+* xgboost, shap
+* dvc – data version control
 
-> **Note:** If you need to work on Python 3.13, scikit-learn wheels are not yet published – use Python 3.12 or below, or build scikit-learn from source.
+> Using Python 3.13? scikit-learn wheels are not yet published; use 3.12 or build from source.
 
 ---
 
-## Running the Tests
+## Testing
 
-Pytest is configured in CI.  From the project root:
 ```bash
 pytest -q
 ```
-Add tests in `test/` as you enhance scripts.
+Add tests under `test/` as scripts are refactored from notebooks.
 
 ---
 
 ## Contributing
 
-1. Fork the repo & create a feature branch.
-2. Commit descriptive messages (e.g. `feat: add Tweedie GLM severity model`).
-3. Ensure notebooks run end-to-end without errors (`Kernel → Restart & Run All`).
-4. Submit a pull request; the CI pipeline will run lint & tests.
+1. Fork & create feature branch off the relevant `task-*` branch.
+2. Ensure notebooks run end-to-end (`Kernel → Restart & Run All`).
+3. Commit with meaningful messages (`feat: add tweedie GLM`).
+4. Open a pull request; CI will run lint & tests.
 
----
 
-## Maintainers
 
-Project maintained by the Analytics Engineering team.
-
----
-
-© 2025 Windsurf Analytics. Licensed under the MIT License.

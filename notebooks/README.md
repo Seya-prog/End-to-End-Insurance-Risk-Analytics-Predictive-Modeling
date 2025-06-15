@@ -1,11 +1,12 @@
-# Notebooks Overview
+
+# Notebooks Guide
 
 | Notebook | Task | Description |
 |----------|------|-------------|
-| `task1_eda.ipynb` | 1 | Initial exploration: delimiter detection, sampling, descriptive stats, visualisation of numeric & categorical variables. |
-| `hypothesis_testing.ipynb` | 3 | Hypothesis tests on Loss Ratio. Multi-group Kruskal-Wallis + control vs test Mann-Whitney; prints decisions & business interpretations. |
-| `modeling.ipynb` | 4 | Severity regression (RF best) + claim-probability classification (XGB best). SHAP explanations and risk-based premium demo. |
+| `task1_eda.ipynb` | 1 & 2 | Exploratory analysis **and** data preparation / feature engineering (adds HasClaim, LossRatio, etc.). |
+| `hypothesis_testing.ipynb` | 3 | Non-parametric hypothesis tests on Loss Ratio. Includes multi-group (province, zip) and control-vs-test segmentation. |
+| `modeling.ipynb` | 4 | Claim-severity regression, claim-probability classification, SHAP interpretation, risk-based premium illustration. |
 
-Run notebooks sequentially – each writes variables consumed by the next.
+Run notebooks in sequential order; each one relies on variables or processed data produced by the previous.
 
-> All notebooks assume the dataset is available at `data/MachineLearningRating_v3.txt`. Pull via `dvc pull` before execution.
+Dataset expected at `data/MachineLearningRating_v3.txt` (pull via `dvc pull`).

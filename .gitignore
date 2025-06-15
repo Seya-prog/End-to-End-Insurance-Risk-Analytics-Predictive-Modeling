@@ -1,5 +1,13 @@
 .venv
 \data
+# Pytest cache
+.pytest_cache/
+
 # Jupyter artefacts
 *.ipynb_checkpoints/
 outputs/
+
+# Python bytecode & caches
+**/__pycache__/
+*.py[cod]
+

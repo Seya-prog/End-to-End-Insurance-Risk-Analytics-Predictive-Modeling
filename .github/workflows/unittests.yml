@@ -35,16 +35,16 @@ jobs:
 
       - name: Run tests (if any)
         run: |
-          if [ -d "test" ] && [ "$(ls -A test)" ]; then
-            echo "Running pytest…"
-            pytest test || code=$?
-            # Exit code 5 = no tests collected → treat as success
-            if [ "$code" = "5" ]; then
-              echo "No tests collected – skipping failure.";
+          if [ -d "test" ] && [ "$(ls -A test | wc -l)" -gt 0 ]; then
+            echo "Running pytest …"
+            pytest -q || code=$?
+            # pytest exit code 5 means "no tests collected" – treat as success
+            if [ "${code:-0}" -eq 5 ]; then
+              echo "No tests collected – treating as success";
               exit 0;
-            else
+            elif [ "${code:-0}" -ne 0 ]; then
               exit $code;
             fi
           else
-            echo "No tests found.";
+            echo "No tests found – skipping";
           fi
